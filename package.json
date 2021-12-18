@@ -16,6 +16,8 @@
   },
   "scripts": {
     "serve": "nodemon server.js",
-    "debug": "ndb server.js"
+    "serve:debug": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js",
+    "debug:debug": "NODE_ENV=production ndb server.js"
   }
 }
