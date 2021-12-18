@@ -1,21 +1,17 @@
-const { Client } = require("pg");
+const {Pool} = require("pg");
 
-exports.openConnection = async () => {
-  const client = new Client({
+exports.openConnection = async () => await new Pool({
     host: "localhost",
     port: 5432,
     user: "othmane",
     password: "mi",
-    database: "authentication",
-  });
-  await client.connect();
-  return client;
-};
-exports.passRequest = async (connection, sql) =>
-  await connection.query(sql, (error, result) =>
-    error ? new Error("error in request to db") : result
-  );
+    database: "m-learning",
+});
+
+exports.passRequest = async (connection, sql) => {
+        return await connection.query(sql)
+}
 
 exports.closeConnection = async (connection) => {
-  await connection.end();
-};
+    await connection.end();
+}
