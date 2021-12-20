@@ -1,12 +1,11 @@
 module.exports = {
-  purge:["./**/*.{html,ejs,css}"],
-  content: [],
+  content: ["./**/*.{html,ejs,css}"],
   darkMode: 'media',
   theme: {
     extend: {},
-    fontFamily:{
-      'headline':['Montserrat','sans-serif'],
-      'body':'Roboto Mono, monospace'
+    fontFamily: {
+      'headline': ['Montserrat', 'sans-serif'],
+      'body': 'Roboto Mono, monospace'
     }
   },
   plugins: [

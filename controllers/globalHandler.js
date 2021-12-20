@@ -1,5 +1,5 @@
 const ErrorApp = require("../utils/errorApp");
-const productionError = ({res, err}) => {
+const productionError = ({ res, err }) => {
     res.status(err.statusCode).json({
         status: err.status,
         message: err.message,
@@ -21,8 +21,8 @@ exports.globalHandler = async (error, req, res, _) => {
 
         // checking invalid data sending to database;
         error.message ||= `we haven't any idea about this error !`
-        let err = {...error, message: error.message, name: error.name}
-        if (err.name === 'CastError') err = new ErrorApp({message: `invalid ${err.path}:${err.value}`, statusCode: 400})
+        let err = { ...error, message: error.message, name: error.name }
+        if (err.name === 'CastError') err = new ErrorApp({ message: `invalid ${err.path}:${err.value}`, statusCode: 400 })
         // checking duplicate data sending to database;
         if (err.code === 11000) {
             err = new ErrorApp({
@@ -30,6 +30,6 @@ exports.globalHandler = async (error, req, res, _) => {
                 statusCode: 400
             })
         }
-        productionError({res, err})
+        productionError({ res, err })
     }
 }
