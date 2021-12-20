@@ -1,24 +1,19 @@
-const {openConnection, passRequest, closeConnection} = require("../config/db");
 const asyncHandler = require('./../utils/asyncHandler')
+const userModel = require('../models/userModel');
 exports.getPage = (req, res) => {
-    res.render("login", {error: {}});
+    res.render("login", {error: {}, value: {}});
     res.end();
 };
 exports.handleData = asyncHandler(async (req, res) => {
-    const {username, password} = req.body
-    const connection = await openConnection();
-    const sql = `select *
-                 from users
-                 where username = '${username}'
-                   and password = '${password}'`;
-    const {rows} = await passRequest(connection, sql);
-    await closeConnection(connection)
-    if (rows.length) {
-        return res.status(200).render('home')
+    const {username, password} = req.body;
+    const error = {
+        username: null, password: null
     }
-
-    const error = {username: 'username not found !'}
-    const value = {username}
-    res.status(401).render('login', {error, value})
-
+    const response = await userModel.findOne({username});
+    error.username = response?.username ? '' : 'username not found !';
+    error.password = (error.username || response?.password === password) ? '' : 'password is wrong!';
+    if (!error.username && !error.password) {
+        return res.status(200).redirect('dashboard');
+    }
+    res.status(401).render('login', {error, value: {username}})
 });

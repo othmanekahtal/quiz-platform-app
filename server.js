@@ -1,6 +1,6 @@
 // errors that's not can handle
 process.on('uncaughtException', (error) => {
-    console.log(`the error is: ${error.name} with message:${error.message}`)
+    console.log(`the error is: ${error.name} with message:${error.message} and error is ${JSON.stringify(error)}`)
     process.exit(1)
 })
 const dotenv = require("dotenv");

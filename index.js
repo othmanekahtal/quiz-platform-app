@@ -4,9 +4,9 @@ const errorController = require("./controllers/errorController");
 const userRouters = require("./routes/userRouters");
 const app = express();
 const {globalHandler} = require('./controllers/globalHandler')
-
 app.set("view engine", "ejs");
 app.set("views", "./views");
+const fs = require('fs');
 // middlewares
 /// middleware for handling json requests
 app.use(express.json());
@@ -16,10 +16,11 @@ app.use(express.urlencoded({
 }))
 app.use(morgan("dev"));
 app.use(express.static("public/"));
-
-app.get("/", (req, res) => {
-    res.render('home');
-});
+app.get('/', (req, res) => {
+    // you need t put it outside the router
+    const index = fs.readFileSync(`${__dirname}/public/pages/home.html`)
+    res.status(200).end(index.toString())
+})
 
 app.use("/user", userRouters);
 

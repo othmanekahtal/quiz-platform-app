@@ -5,7 +5,7 @@ const productionError = ({res, err}) => {
         message: err.message,
     })
 }
-exports.globalHandler = async (error, res, req, _) => {
+exports.globalHandler = async (error, req, res, _) => {
     error.statusCode ||= 500;
     error.status ||= 'error';
     if (process.env?.NODE_ENV === 'development') {
