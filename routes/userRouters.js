@@ -1,5 +1,5 @@
 const express = require("express");
-const { getPage, handleData } = require("./../controllers/userController");
+const { handleData } = require("./../controllers/userController");
 const router = express.Router();
-router.route('').get(getPage).post(handleData);
+router.route('').post(handleData);
 module.exports = router;

@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const errorController = require("./controllers/errorController");
 const userRouters = require("./routes/userRouters");
 const app = express();
-const {globalHandler} = require('./controllers/globalHandler')
+const { globalHandler } = require('./controllers/globalHandler')
 app.set("view engine", "ejs");
 app.set("views", "./views");
 const fs = require('fs');
@@ -17,9 +17,7 @@ app.use(express.urlencoded({
 app.use(morgan("dev"));
 app.use(express.static("public/"));
 app.get('/', (req, res) => {
-    // you need t put it outside the router
-    const index = fs.readFileSync(`${__dirname}/public/pages/home.html`)
-    res.status(200).end(index.toString())
+    res.status(204).end()
 })
 
 app.use("/user", userRouters);

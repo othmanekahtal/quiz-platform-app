@@ -17,8 +17,6 @@ exports.globalHandler = async (error, req, res, _) => {
         })
     }
     if (process.env?.NODE_ENV === 'production') {
-        // we need to clone error object
-
         // checking invalid data sending to database;
         error.message ||= `we haven't any idea about this error !`
         let err = { ...error, message: error.message, name: error.name }

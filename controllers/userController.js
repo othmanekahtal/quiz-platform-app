@@ -1,10 +1,6 @@
 const asyncHandler = require('./../utils/asyncHandler')
 const userModel = require('../models/userModel');
 const ErrorApp = require('./../utils/errorApp')
-exports.getPage = (req, res) => {
-    res.render("login", { error: {}, value: {} });
-    res.end();
-};
 exports.handleData = asyncHandler(async (req, res, next) => {
     const { username, password } = req.body;
     if (!(username && password)) return next(new ErrorApp({ message: 'failed', statusCode: 400 }))
