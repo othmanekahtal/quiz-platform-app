@@ -1,0 +1,160 @@
+<div
+  class="
+    bg-white
+    h-full
+    w-full
+    grid grid-cols-dashboard-column-guide grid-rows-dashboard-row-guide
+    gap-x-10
+  "
+  id="admin_dashboard"
+>
+  <aside
+    class="
+      row-span-full
+      col-span-1
+      flex flex-col
+      py-4
+      px-6
+      bg-indigo-500
+      justify-between
+      sidebar
+      shadow-lg
+    "
+  >
+    <div class="logo w-full">
+      <svg class="fill-current w-20 h-20 object-fit mx-auto">
+        <use href="/images/svg/sprite.svg#logo"></use>
+      </svg>
+    </div>
+    <ul class="flex flex-col gap-8 sidebar__menu">
+        <li>
+        <a href="/dashboard" <% if (activeItem==='dashboard'.toLowerCase()) { %>
+            class="active-panel"
+          <% } %>>
+          <svg>
+            <use href="/images/svg/sprite.svg#dashboard"></use>
+          </svg>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+      <a href="/dashboard/message" <% if (activeItem==='message'.toLowerCase()) { %>
+        class="active-panel"
+      <% } %>>
+        <svg>
+          <use href="/images/svg/sprite.svg#messages"></use>
+        </svg>
+        <span>message</span>
+    </a>
+      </li>
+      <li>
+      <a href="/dashboard/assignment" <% if (activeItem==='assignment'.toLowerCase()) { %>
+        class="active-panel"
+      <% } %>>
+        <svg>
+          <use href="/images/svg/sprite.svg#test"></use>
+        </svg>
+        <span>assignment</span>
+    </a>
+      </li>
+      <li>
+      <a href="/dashboard/students" <% if (activeItem==='Students'.toLowerCase()) { %>
+        class="active-panel"
+      <% } %>>
+        <svg>
+          <use href="/images/svg/sprite.svg#group"></use>
+        </svg>
+        <span>Students</span>
+      </a>
+    </li>
+        <li >
+          <a href="/dashboard/subjects" <% if (activeItem==='Subjects'.toLowerCase()) { %>
+            class="active-panel"
+          <% } %>>
+        <svg>
+          <use href="/images/svg/sprite.svg#subject"></use>
+        </svg>
+        <span>Subjects</span>
+    </a>
+      </li>
+      <li>
+      <a <% if (activeItem==='Statistics'.toLowerCase()) { %>
+        class="active-panel"
+      <% } %> href="/dashboard/statistics">
+        <svg class="fill-current text-white w-12 h-12">
+          <use href="/images/svg/sprite.svg#analysis"></use>
+        </svg>
+        <span>Statistics</span>
+      </a>
+      </li>
+    </ul>
+    <div
+      class="
+        logout
+        flex
+        items-center
+        text-white
+        bg-indigo-400
+        rounded-lg
+        cursor-pointer
+        py-1
+        px-2
+        hover:bg-indigo-600
+        active:bg-indigo-700
+        transition
+      "
+    >
+      <!--            todo : dynamic source-->
+      <img
+        alt="man face"
+        class="rounded-full w-12 h-12 object-cover"
+        src="<%=src%>"
+      />
+      <div>
+        <div class="name"><%=fullName%></div>
+        <div class="email text-sm"><%=email%></div>
+      </div>
+    </div>
+  </aside>
+  <%- include('../components/navbar') %>
+  <main class="pr-8 pb-8 w-full h-full flex flex-col gap-y-8 bg-gray-50">
+    <div
+      class="
+        bg-white
+        px-8
+        py-6
+        shadow-lg
+        rounded-lg
+        flex
+        justify-between
+        items-center
+      "
+      id="welcome"
+    >
+      <div>
+        <h2 class="text-gray-900 font-bold text-3xl pb-4">
+          <!--            todo : you need to add welcome message here-->
+          Hello Again Mr. Othmane
+        </h2>
+        <div class="text-gray-500">
+          You have a 12 new notification , you will check it
+        </div>
+      </div>
+      <div class="w-20 h-20 object-cover"></div>
+    </div>
+    <div class="hidden" id="main-dashboard"></div>
+    <div class="hidden" id="main-message"></div>
+    <div class="hidden" id="main-assignment"></div>
+    <div
+      class="hidden w-full h-full bg-white rounded-lg shadow-lg px-8 py-6"
+      id="main-subjects"
+    >
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-gray-900 font-bold text-3xl pb-4">Subjects :</h2>
+        <a class="btn btn-primary lowercase" id="add_subject"> add subject </a>
+      </div>
+      <div id="subjects-container" class="flex flex-col gap-y-4"></div>
+    </div>
+    <div class="hidden" id="main-statistics"></div>
+  </main>
+</div>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/build.min.css" />
+    <link rel="icon" href="/images/svg/dark-logo.svg" />
+    <title>Quiz platform | dashboard</title>
+  </head>
+  <body>
+    <!--will be hidden-->
+    <%- include('../components/asidebar',{ activeItem:'subjects',
+    src:'https://www.pngkey.com/png/full/65-658471_happy-man-png.png',
+    fullName:'othmane kahtal',email:'contact@gmail.com' }) %>
+    <div
+      class="
+        hidden
+        blur-layer
+        absolute
+        w-screen
+        h-screen
+        bg-gray-800 bg-opacity-25
+        backdrop-filter backdrop-blur-md
+        flex
+        items-center
+        justify-center
+      "
+    >
+      <div class="w-1/2 rounded-lg px-8 py-10 bg-white shadow-lg relative">
+        <svg
+          class="
+            cursor-pointer
+            w-6
+            h-6
+            current-fill
+            text-gray-800
+            absolute
+            top-4
+            right-4
+            close-icon
+          "
+        >
+          <use href="/images/svg/sprite.svg#cancel"></use>
+        </svg>
+        <div class="hidden add_subject">
+          <h2 class="text-center text-gray-900 text-2xl">Add new subject :</h2>
+          <form action="" id="add_subject_form" class="mt-6">
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label for="title" class="block text-gray-700 text-sm font-bold"
+                >Subject title:</label
+              >
+              <input
+                type="text"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="title"
+                placeholder="name"
+                name="title"
+              />
+            </div>
+            <p
+              id="title_sub_error"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label for="max" class="block text-gray-700 text-sm font-bold"
+                >Maximum score:</label
+              >
+              <input
+                type="Number"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="max"
+                placeholder="Maximum score"
+                name="max"
+              />
+            </div>
+            <p
+              id="max_sub_error"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label for="min" class="block text-gray-700 text-sm font-bold"
+                >Minimum score:</label
+              >
+              <input
+                type="Number"
+                name="min"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="min"
+                placeholder="Minimum score"
+              />
+            </div>
+            <p
+              id="min_sub_error"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex justify-end gap-4">
+              <button class="btn btn-primary lowercase" type="submit">
+                add subject
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary lowercase btn_cancel"
+              >
+                cancel
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="hidden add_sub_subject">
+          <form id="add_sub_subject_form">
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label
+                for="title_Sub"
+                class="block text-gray-700 text-sm font-bold"
+                >Subject title:</label
+              >
+              <input
+                type="text"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="title_Sub"
+                placeholder="name"
+                name="title"
+              />
+            </div>
+            <p
+              id="title_sub_error_Sub"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label for="max_Sub" class="block text-gray-700 text-sm font-bold"
+                >Maximum score:</label
+              >
+              <input
+                type="Number"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="max_Sub"
+                placeholder="Maximum score"
+                name="max"
+              />
+            </div>
+            <p
+              id="max_sub_error_Sub"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label for="min_sub" class="block text-gray-700 text-sm font-bold"
+                >Minimum score:</label
+              >
+              <input
+                type="Number"
+                name="min"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="min_sub"
+                placeholder="Minimum score"
+              />
+            </div>
+            <p
+              id="min_sub_error_Sub"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex justify-end gap-4">
+              <button class="btn btn-primary lowercase" type="submit">
+                add subject
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary lowercase btn_cancel"
+              >
+                cancel
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="hidden update_subject">
+          <h2 class="text-center text-gray-900 text-2xl">Add new subject :</h2>
+          <form action="" id="update_subject_form" class="mt-6">
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label
+                for="title_Sub_update"
+                class="block text-gray-700 text-sm font-bold"
+                >Subject title:</label
+              >
+              <input
+                type="text"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="title_Sub_update"
+                placeholder="name"
+                name="title"
+              />
+            </div>
+            <p
+              id="title_sub_update_error"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label
+                for="max_update"
+                class="block text-gray-700 text-sm font-bold"
+                >Maximum score:</label
+              >
+              <input
+                type="Number"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="max_update"
+                placeholder="Maximum score"
+                name="max"
+              />
+            </div>
+            <p
+              id="max_sub_update_error"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label
+                for="min_update"
+                class="block text-gray-700 text-sm font-bold"
+                >Minimum score:</label
+              >
+              <input
+                type="Number"
+                name="min"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="min_update"
+                placeholder="Minimum score"
+              />
+            </div>
+            <p
+              id="min_sub_update_error"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex justify-end gap-4">
+              <button class="btn btn-primary lowercase" type="submit">
+                add subject
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary lowercase btn_cancel"
+              >
+                cancel
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="hidden update_sub_subject">
+          <form id="update_sub_subject_form">
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label
+                for="title_sub_sub_update"
+                class="block text-gray-700 text-sm font-bold"
+                >Subject title:</label
+              >
+              <input
+                type="text"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="title_sub_sub_update"
+                placeholder="name"
+                name="title"
+              />
+            </div>
+            <p
+              id="title_sub_sub_error"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label
+                for="max_Sub_update"
+                class="block text-gray-700 text-sm font-bold"
+                >Maximum score:</label
+              >
+              <input
+                type="Number"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="max_Sub_update"
+                placeholder="Maximum score"
+                name="max"
+              />
+            </div>
+            <p
+              id="max_sub_error_sub_sub"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex gap-y-4 flex-col mb-6">
+              <label
+                for="min_sub_sub"
+                class="block text-gray-700 text-sm font-bold"
+                >Minimum score:</label
+              >
+              <input
+                type="Number"
+                name="min"
+                class="
+                  shadow
+                  appearance-none
+                  border
+                  rounded
+                  w-full
+                  py-2
+                  px-3
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:shadow-outline
+                "
+                id="min_sub_sub"
+                placeholder="Minimum score"
+              />
+            </div>
+            <p
+              id="min_sub_error_sub_sub"
+              class="text-red-500 text-xs transform -translate-y-3 italic"
+            ></p>
+            <div class="flex justify-end gap-4">
+              <button class="btn btn-primary lowercase" type="submit">
+                add subject
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary lowercase btn_cancel"
+              >
+                cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
