@@ -3,13 +3,59 @@
 @tailwind utilities;
 
 @layer components {
-    .btn{
-        @apply uppercase px-5 py-3 inline-block rounded-lg font-medium tracking-wide 2xl:mt-12 hover:-translate-y-1 transform cursor-pointer transition;
-    }
-    .btn-primary {
-        @apply bg-indigo-500 text-white  hover:bg-indigo-400 focus:outline-none focus:ring-offset-2 focus:ring-offset-indigo-600 active:bg-indigo-600;
-    }
-    .btn-secondary {
-        @apply bg-gray-200 text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-offset-2  active:bg-gray-400;
-    }
+  .btn {
+    @apply uppercase px-5 py-3 inline-block rounded-lg font-medium tracking-wide hover:-translate-y-1 transform cursor-pointer transition;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-500 text-white  hover:bg-indigo-400 focus:outline-none focus:ring-offset-2 focus:ring-offset-indigo-600 active:bg-indigo-600;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-offset-2  active:bg-gray-400;
+  }
+
+  .correct-answer {
+    background-color: mediumspringgreen !important;
+  }
+
+  .wrong-answer {
+    background-color: #ff4d4d !important;
+  }
+
+  .sidebar > ul > li > a {
+    @apply flex gap-4 text-white items-center px-6 py-2 bg-indigo-500 rounded-lg cursor-pointer hover:bg-indigo-400 active:bg-indigo-300 transition shadow-lg;
+  }
+
+  .sidebar > ul > li > a > svg {
+    @apply fill-current object-cover text-white h-10 w-10;
+  }
+
+  .active-panel {
+    @apply bg-indigo-300 !important;
+  }
+
+  .sidebar > ul > li a > span {
+    @apply text-lg;
+  }
+
+  .navbar > ul {
+    @apply flex justify-end gap-4;
+  }
+
+  .navbar > ul > li > a {
+    @apply bg-indigo-500 rounded-full h-10 w-10 flex  items-center justify-center cursor-pointer hover:bg-indigo-400 active:bg-indigo-600 transition shadow-lg;
+  }
+
+  .navbar > ul > li > a > svg {
+    @apply fill-current object-cover text-white h-4 w-4;
+  }
+
+  .hidden-list {
+    @apply h-0 p-0 overflow-hidden  !important;
+  }
+
+  .show-list {
+    @apply pl-4 py-6 mt-2;
+  }
 }
