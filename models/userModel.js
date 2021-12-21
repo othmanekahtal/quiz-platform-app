@@ -1,5 +1,5 @@
-const database = require('../config/database.js')();
-const {Schema} = database;
+const mongoose = require('mongoose')
+const {Schema} = mongoose;
 const userSchema = new Schema({
         username: {
             type: String,
@@ -18,13 +18,5 @@ const userSchema = new Schema({
             minlength: [10, 'A username must have more or equal then 10 characters']
         },
     },
-    {
-        toObject: {
-            virtuals: true
-        },
-        toJSON: {
-            virtuals: true
-        },
-    }
 )
-module.exports = database.model('user', userSchema);
+module.exports = mongoose.model('user', userSchema);

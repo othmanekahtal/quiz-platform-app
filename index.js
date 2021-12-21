@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const errorController = require("./controllers/errorController");
-const userRouters = require("./routes/userRouters");
+const userRouters = require("./routes/authRouters");
 const adminRouters = require("./routes/adminRoutes");
 const fs = require("fs");
 
