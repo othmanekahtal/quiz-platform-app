@@ -18,6 +18,6 @@
     "serve:debug": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
     "debug:debug": "NODE_ENV=production ndb server.js",
-    "serve": "nodemon server.js & yarn tailwind:watch"
+    "serve": "nodemon server.js"
   }
 }

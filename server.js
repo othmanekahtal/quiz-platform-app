@@ -4,7 +4,7 @@ process.on('uncaughtException', (error) => {
     process.exit(1)
 })
 const dotenv = require("dotenv");
-dotenv.config({path: "./.env"});
+dotenv.config({ path: "./.env" });
 const app = require("./index");
 const port = process.env.PORT || 1111;
 const server = app.listen(port, () => {
