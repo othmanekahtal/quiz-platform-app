@@ -4,7 +4,7 @@ exports.getPage = (req, res) => {
     res.render("login", {error: {}, value: {}});
     res.end();
 };
-exports.handleData = asyncHandler(async (req, res) => {
+exports.login = asyncHandler(async (req, res) => {
     const {username, password} = req.body;
     const error = {
         username: null, password: null
