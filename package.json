@@ -22,9 +22,9 @@
     "tailwindcss": "^3.0.7"
   },
   "scripts": {
-    "serve:debug": "NODE_ENV=production nodemon server.js",
+    "serve:production": "NODE_ENV=production node server.js",
     "debug": "ndb server.js",
-    "debug:debug": "NODE_ENV=production ndb server.js",
+    "debug:production": "NODE_ENV=production ndb server.js",
     "tailwind:watch": "yarn tailwindcss -i ./public/css/tailwind.css -o ./public/css/build.min.css --watch",
     "serve": "nodemon server.js & yarn tailwind:watch"
   }

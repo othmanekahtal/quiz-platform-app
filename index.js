@@ -1,5 +1,4 @@
 const express = require("express");
-const morgan = require("morgan");
 const errorController = require("./controllers/errorController");
 const userRouters = require("./routes/authRouters");
 const adminRouters = require("./routes/adminRoutes");
@@ -19,7 +18,10 @@ app.use(
     extended: true,
   })
 );
-if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+if (process.env.NODE_ENV === "development") {
+  const morgan = require("morgan");
+  app.use(morgan("dev"));
+}
 app.use(express.static("public/"));
 app.get("/", (req, res) => {
   // you need t put it outside the router
