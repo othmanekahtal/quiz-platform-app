@@ -4,7 +4,7 @@
 
 @layer components {
   .btn {
-    @apply uppercase px-5 py-3 inline-block rounded-lg font-medium tracking-wide hover:-translate-y-1 transform cursor-pointer transition;
+    @apply px-5 py-3 inline-block rounded-lg font-medium tracking-wide hover:-translate-y-1 transform cursor-pointer transition;
   }
 
   .btn-primary {
