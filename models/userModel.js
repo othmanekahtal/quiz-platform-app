@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const {isEmail} = require('validator');
-const {hashingPassword,getFullName,samePassword} =  require('./middlewares/userMiddleware')
+const {hashingPassword,getFullName,samePassword} =  require('../middlewares/models/userMiddleware')
 const userSchema = new Schema(
     {
         username: {

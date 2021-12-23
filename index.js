@@ -2,19 +2,31 @@ const express = require("express");
 const errorController = require("./controllers/errorController");
 const userRouters = require("./routes/authRouters");
 const adminRouters = require("./routes/adminRoutes");
-
+const session = require('express-session')
+const MongoDBStore = require("connect-mongodb-session")(session);
+const uri = process.env.HOSTED_DATABASE.replace('<password>', process.env.DATABASE_PASSWORD);
+const store = new MongoDBStore({
+    uri,
+    collection: "sessions",
+});
 const app = express();
 const {globalHandler} = require("./controllers/globalHandler");
 app.set("view engine", "ejs");
 app.set("views", "./views");
 const fs = require("fs");
 // middlewares
-/// middleware for handling json requests
+/// middlewares for handling json requests
 app.use(express.json());
-/// middleware for handling formData
+/// middlewares for handling formData
 app.use(express.urlencoded({
     extended: true,
 }));
+app.use(session({
+    resave: false,
+    secret: 'this-key-for-session-app',
+    saveUninitialized: false,
+    store,
+}))
 if (process.env.NODE_ENV === 'development') {
     const morgan = require("morgan");
     app.use(morgan("dev"));

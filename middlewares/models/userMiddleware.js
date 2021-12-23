@@ -4,7 +4,7 @@ exports.hashingPassword = async function (next) {
     this.confirm_password = undefined;
     next()
 }
-exports.getFullName = async function (next) {
+exports.getFullName = async function () {
     return `${this.first_name} ${this.last_name}`;
 }
 exports.samePassword = async function({candidate_pass,user_pass}){
