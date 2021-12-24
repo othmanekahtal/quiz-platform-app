@@ -1,4 +1,4 @@
 const ErrorApp = require('./../utils/errorApp')
-module.exports = (req, res, next) => {
-  return next(new ErrorApp({ message: 'Resource not found !', statusCode: 404 }))
-};
+module.exports = function(req, res, next) {
+  next(new ErrorApp({ message: `Can't find ${req.originalUrl} on this server`, statusCode: 404 }));
+}
