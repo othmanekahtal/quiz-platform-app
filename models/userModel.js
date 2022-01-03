@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const {isEmail} = require('validator');
-const {hashingPassword,getFullName,samePassword} =  require('../middlewares/models/userMiddleware')
+const {hashingPassword, getFullName, samePassword} = require('../middlewares/models/userMiddleware')
 const userSchema = new Schema(
     {
         username: {
@@ -51,11 +51,10 @@ const userSchema = new Schema(
                 }
             }
         },
-        //:fire:
         image_cover: {
             type: String,
             // required: [true, 'An user must have a cover image'],
-            default:'https://www.pngkey.com/png/full/65-658471_happy-man-png.png'
+            default: 'https://www.pngkey.com/png/full/65-658471_happy-man-png.png'
         },
         created_at: {
             type: Date,

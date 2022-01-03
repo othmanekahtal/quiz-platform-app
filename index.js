@@ -7,10 +7,9 @@ const subRouters = require("./routes/subRouters");
 const studentRouters = require("./routes/studentRouters");
 const app = express();
 const {globalHandler} = require('./controllers/globalHandler')
-// middlewares
 /// middleware for handling json requests
 app.use(express.json());
-/// middleware for handling formData
+/// middleware for handling json
 app.use(express.urlencoded({
     extended: true
 }))
