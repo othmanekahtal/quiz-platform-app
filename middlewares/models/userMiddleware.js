@@ -7,7 +7,7 @@ exports.hashingPassword = async function (next) {
 exports.getFullName = async function () {
     return `${this.first_name} ${this.last_name}`;
 }
-exports.samePassword = async function({candidate_pass,user_pass}){
-    console.log({candidate_pass,user_pass})
-    return await bcrypt.compare(user_pass,candidate_pass);
-}
+exports.correctPassword = async ({
+                                     candidatePassword,
+                                     userPassword
+                                 }) => await bcrypt.compare(userPassword, candidatePassword);

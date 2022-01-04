@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const {isEmail} = require('validator');
-const {hashingPassword,getFullName,samePassword} =  require('../middlewares/models/userMiddleware')
+const {hashingPassword,getFullName,correctPassword} =  require('../middlewares/models/userMiddleware')
 const userSchema = new Schema(
     {
         username: {
@@ -73,5 +73,5 @@ const userSchema = new Schema(
 );
 userSchema.virtual('full_name').get(getFullName);
 userSchema.pre('save', hashingPassword);
-userSchema.methods.samePassword = samePassword;
+userSchema.methods.correctPassword = correctPassword;
 module.exports = mongoose.model("user", userSchema);
